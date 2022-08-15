@@ -1,6 +1,7 @@
 package com.example.cryptoconverter.data.network
 
 import com.example.cryptoconverter.data.network.model.CoinsListDto
+import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -18,9 +19,9 @@ interface APIService {
     }
 
     @GET("v1/cryptocurrency/listings/latest")
-    suspend fun getTopCoinsInfo(
+    fun getTopCoinsInfo(
         @Query(QUERY_PARAM_API_KEY) apiKey: String = API_KEY,
         @Query(QUERY_PARAM_LIMIT) limit: Int = LIMIT,
         @Query(QUERY_PARAM_CURRENCY_CONVERT) currencyConvert: String = CURRENCY_CONVERT,
-    ): CoinsListDto
+    ): Single<CoinsListDto>
 }
