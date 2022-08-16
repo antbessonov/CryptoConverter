@@ -6,10 +6,10 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "crypto_coins")
 data class CoinInfoDbModel(
     @PrimaryKey
-    val id: Int? = null,
-    val name: String? = null,
-    val symbol: String? = null,
-    val tags: List<String>? = null,
-    val lastUpdated: String? = null,
-    val price: Double? = null,
+    val id: Int?,
+    val name: String?,
+    val symbol: String?,
+    val tags: String?,
+    val lastUpdated: String?,
+    val price: Double?,
 )
