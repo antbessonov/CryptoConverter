@@ -6,5 +6,5 @@ import com.google.gson.annotations.SerializedName
 data class CoinPriceUsdDto(
     @SerializedName("price")
     @Expose
-    private val price: Double? = null,
+    val price: Double?,
 )

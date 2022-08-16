@@ -3,28 +3,28 @@ package com.example.cryptoconverter.data.network.model
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class CoinInfoDto (
+data class CoinInfoDto(
     @SerializedName("id")
     @Expose
-    private val id: Int? = null,
+    val id: Int?,
 
     @SerializedName("name")
     @Expose
-    private val name: String? = null,
+    val name: String?,
 
     @SerializedName("symbol")
     @Expose
-    private val symbol: String? = null,
+    val symbol: String?,
 
     @SerializedName("tags")
     @Expose
-    private val tags: List<String>? = null,
+    val tags: List<String>?,
 
     @SerializedName("last_updated")
     @Expose
-    private val lastUpdated: String? = null,
+    val lastUpdated: String?,
 
     @SerializedName("quote")
     @Expose
-    private val quote: CoinQuoteDto? = null,
+    val coinPriceContainer: CoinPriceContainerDto?,
 )
