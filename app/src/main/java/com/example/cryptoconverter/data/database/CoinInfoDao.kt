@@ -10,11 +10,11 @@ import androidx.room.Query
 interface CoinsInfoDao {
 
     @Query("SELECT * FROM crypto_coins")
-    fun getCoinsInfoList(): LiveData<List<CoinInfoDbModel>>
+    fun getCoinInfoList(): LiveData<List<CoinInfoDbModel>>
 
     @Query("SELECT * FROM crypto_coins WHERE id == :id LIMIT 1")
     fun getCoinInfo(id: Int): LiveData<CoinInfoDbModel>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertCoinsInfoList(coinsInfoList: List<CoinInfoDbModel>)
+    fun insertCoinInfoList(coinInfoList: List<CoinInfoDbModel>)
 }
