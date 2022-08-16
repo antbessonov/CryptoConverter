@@ -7,7 +7,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
 @Dao
-interface CoinsInfoDao {
+interface CoinInfoDao {
 
     @Query("SELECT * FROM crypto_coins")
     fun getCoinInfoList(): LiveData<List<CoinInfoDbModel>>
