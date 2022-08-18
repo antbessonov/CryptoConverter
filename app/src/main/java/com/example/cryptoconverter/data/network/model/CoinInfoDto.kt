@@ -16,6 +16,10 @@ data class CoinInfoDto(
     @Expose
     val symbol: String?,
 
+    @SerializedName("cmc_rank")
+    @Expose
+    val cmcRank: Int?,
+
     @SerializedName("tags")
     @Expose
     val tags: List<String>?,
