@@ -3,6 +3,8 @@ package com.example.cryptoconverter.data.mapper
 import com.example.cryptoconverter.data.database.CoinInfoDbModel
 import com.example.cryptoconverter.data.network.model.CoinInfoDto
 import com.example.cryptoconverter.domain.CoinInfo
+import java.text.SimpleDateFormat
+import java.util.*
 
 class CoinMapper {
 
@@ -26,8 +28,19 @@ class CoinMapper {
         id = dbModel.id.toString(),
         name = dbModel.name,
         symbol = dbModel.symbol,
-        lastUpdated = dbModel.lastUpdated,
-        price = String.format("%,.8f", dbModel.price),
+        lastUpdated = convertTime(dbModel.lastUpdated),
+        price = String.format("%,.7f", dbModel.price),
         url = BASE_ICON_URL + dbModel.id + ICON_FORMAT
     )
+
+    private fun convertTime(dateString: String?): String {
+        if (dateString == null) return ""
+        val patternInput = "yyyy-MM-dd'T'HH:mm:ss.SSSX"
+        val sdfInput = SimpleDateFormat(patternInput, Locale.getDefault())
+        val date = sdfInput.parse(dateString) ?: return ""
+        val patternOutput = "HH:mm"
+        val sdfOutput = SimpleDateFormat(patternOutput, Locale.getDefault())
+        sdfOutput.timeZone = TimeZone.getDefault()
+        return sdfOutput.format(date)
+    }
 }
