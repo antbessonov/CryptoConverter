@@ -9,6 +9,7 @@ data class CoinInfoDbModel(
     val id: Int?,
     val name: String?,
     val symbol: String?,
+    val cmcRank: Int?,
     val tags: String?,
     val lastUpdated: String?,
     val price: Double?,
