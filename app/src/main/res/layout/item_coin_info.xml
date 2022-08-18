@@ -46,13 +46,13 @@
             android:id="@+id/tv_price_coin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:padding="10dp"
+            android:layout_marginStart="65dp"
+            android:padding="8dp"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/tv_name_coin"
-            app:layout_constraintStart_toEndOf="@id/tv_symbol_coin"
+            app:layout_constraintStart_toStartOf="@id/tv_symbol_coin"
             app:layout_constraintTop_toTopOf="@id/tv_symbol_coin"
             tools:text="19983.24" />
 
@@ -60,13 +60,13 @@
             android:id="@+id/tv_currency_convert"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/usd"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/tv_price_coin"
             app:layout_constraintStart_toEndOf="@id/tv_price_coin"
-            app:layout_constraintTop_toTopOf="@id/tv_price_coin"
-            tools:text="USD" />
+            app:layout_constraintTop_toTopOf="@id/tv_price_coin" />
 
         <TextView
             android:id="@+id/tv_last_updated"
