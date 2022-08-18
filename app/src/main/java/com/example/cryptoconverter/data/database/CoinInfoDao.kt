@@ -9,7 +9,7 @@ import androidx.room.Query
 @Dao
 interface CoinInfoDao {
 
-    @Query("SELECT * FROM crypto_coins")
+    @Query("SELECT * FROM crypto_coins ORDER BY cmcRank")
     fun getCoinInfoList(): LiveData<List<CoinInfoDbModel>>
 
     @Query("SELECT * FROM crypto_coins WHERE id == :id LIMIT 1")
