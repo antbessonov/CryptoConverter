@@ -11,6 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/Theme.CryptoConverter">
         <activity
+            android:name=".presentation.CoinConvertActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.CoinPriceListActivity"
             android:exported="true">
             <intent-filter>
