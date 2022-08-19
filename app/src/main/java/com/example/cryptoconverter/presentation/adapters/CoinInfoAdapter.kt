@@ -32,6 +32,9 @@ class CoinInfoAdapter(
         holder.binding.tvNameCoin.text = coin.name
         holder.binding.tvPriceCoin.text = coin.price
         holder.binding.tvLastUpdated.text = String.format(lastUpdateTemplate, coin.lastUpdated)
+        holder.binding.root.setOnClickListener {
+            onCoinClickListener?.onCoinClick(coin)
+        }
     }
 
     interface OnCoinClickListener {
