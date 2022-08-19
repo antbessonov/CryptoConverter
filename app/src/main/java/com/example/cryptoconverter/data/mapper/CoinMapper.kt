@@ -10,8 +10,9 @@ class CoinMapper {
 
     companion object {
 
-        const val BASE_ICON_URL = "https://s2.coinmarketcap.com/static/img/coins/64x64/"
-        const val ICON_FORMAT = ".png"
+        private const val BASE_ICON_URL = "https://s2.coinmarketcap.com/static/img/coins/64x64/"
+        private const val ICON_FORMAT = ".png"
+        private const val EMPTY_SYMBOL = ""
     }
 
     fun mapDtoToDbModel(dto: CoinInfoDto) = CoinInfoDbModel(
@@ -25,7 +26,7 @@ class CoinMapper {
     )
 
     fun mapDbModelToEntity(dbModel: CoinInfoDbModel) = CoinInfo(
-        id = dbModel.id.toString(),
+        id = dbModel.id,
         name = dbModel.name,
         symbol = dbModel.symbol,
         lastUpdated = convertTime(dbModel.lastUpdated),
@@ -34,10 +35,10 @@ class CoinMapper {
     )
 
     private fun convertTime(dateString: String?): String {
-        if (dateString == null) return ""
+        if (dateString == null) return EMPTY_SYMBOL
         val patternInput = "yyyy-MM-dd'T'HH:mm:ss.SSSX"
         val sdfInput = SimpleDateFormat(patternInput, Locale.getDefault())
-        val date = sdfInput.parse(dateString) ?: return ""
+        val date = sdfInput.parse(dateString) ?: return EMPTY_SYMBOL
         val patternOutput = "HH:mm"
         val sdfOutput = SimpleDateFormat(patternOutput, Locale.getDefault())
         sdfOutput.timeZone = TimeZone.getDefault()
