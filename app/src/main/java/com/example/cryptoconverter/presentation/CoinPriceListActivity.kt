@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.cryptoconverter.databinding.ActivityCoinPriceListBinding
+import com.example.cryptoconverter.domain.CoinInfo
 import com.example.cryptoconverter.presentation.adapters.CoinInfoAdapter
 
 class CoinPriceListActivity : AppCompatActivity() {
@@ -22,6 +23,17 @@ class CoinPriceListActivity : AppCompatActivity() {
 
         val adapter = CoinInfoAdapter(this)
         binding.rvCoinPriceList.adapter = adapter
+        adapter.onCoinClickListener = object : CoinInfoAdapter.OnCoinClickListener {
+            override fun onCoinClick(coinInfo: CoinInfo) {
+                val intent = coinInfo.id?.let {
+                    CoinConvertActivity.newIntent(
+                        this@CoinPriceListActivity,
+                        it
+                    )
+                }
+                startActivity(intent)
+            }
+        }
 
         viewModel.coinInfoList.observe(this) {
             adapter.submitList(it)
