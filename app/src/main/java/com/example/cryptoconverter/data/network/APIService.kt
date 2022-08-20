@@ -15,7 +15,7 @@ interface APIService {
 
         private const val QUERY_PARAM_AMOUNT_CURRENCY_TO_CONVERT = "amount"
         private const val QUERY_PARAM_CURRENCY_ID = "id"
-        private const val QUERY_PARAM_CURRENCY_CONVERT_ID = "convert"
+        private const val QUERY_PARAM_CURRENCY_CONVERT_ID = "convert_id"
 
         private const val API_KEY = "23571264-9dc3-417b-ab36-3b7dccfdd97f"
         private const val LIMIT = 15
