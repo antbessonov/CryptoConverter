@@ -3,4 +3,12 @@
     <string name="logo_coin">Logo Coin</string>
     <string name="usd">USD</string>
     <string name="last_update_template">Время последнего обновления: %s</string>
+    <string name="default_amount_currency_to_convert">100</string>
+
+    <string-array name="currencies_array">
+        <item>USD</item>
+        <item>EUR</item>
+        <item>GBP</item>
+        <item>JPY</item>
+    </string-array>
 </resources>

@@ -63,28 +63,60 @@
         app:layout_constraintStart_toEndOf="@id/tv_price_coin"
         app:layout_constraintTop_toTopOf="@id/tv_price_coin" />
 
-    <EditText
-        android:id="@+id/editTextNumber"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_60"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:ems="10"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <EditText
+        android:id="@+id/edt_amount_currency_to_convert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:ems="5"
+        android:gravity="end"
+        android:hint="@string/default_amount_currency_to_convert"
         android:inputType="number"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@id/spinner_currencies_convert"
         app:layout_constraintTop_toBottomOf="@+id/tv_price_coin" />
 
-    <EditText
-        android:id="@+id/editTextNumber2"
+    <Spinner
+        android:id="@+id/spinner_currencies_convert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
+        android:entries="@array/currencies_array"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+        app:layout_constraintBottom_toBottomOf="@id/edt_amount_currency_to_convert"
+        app:layout_constraintStart_toStartOf="@id/guideline_60"
+        app:layout_constraintTop_toTopOf="@id/edt_amount_currency_to_convert" />
 
+    <TextView
+        android:id="@+id/tv_convert_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="end"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_60"
+        app:layout_constraintTop_toBottomOf="@+id/edt_amount_currency_to_convert"
+        tools:text="0.0050042" />
+
+    <TextView
+        android:id="@+id/tv_convert_result_currency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_convert_result"
+        app:layout_constraintStart_toStartOf="@id/guideline_60"
+        app:layout_constraintTop_toTopOf="@id/tv_convert_result"
+        tools:text="BTC" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
