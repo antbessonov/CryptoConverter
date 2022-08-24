@@ -2,7 +2,7 @@ package com.example.cryptoconverter.data.mapper
 
 import com.example.cryptoconverter.data.database.CoinInfoDbModel
 import com.example.cryptoconverter.data.network.model.CoinInfoDto
-import com.example.cryptoconverter.data.network.model.CoinPriceConversionContainerDto
+import com.example.cryptoconverter.data.network.model.CoinPriceConversionDto
 import com.example.cryptoconverter.domain.CoinInfo
 import com.example.cryptoconverter.domain.CoinPriceConversion
 import java.text.SimpleDateFormat
@@ -36,14 +36,14 @@ class CoinMapper {
         url = BASE_ICON_URL + dbModel.id + ICON_FORMAT
     )
 
-    fun mapDtoTOEntity(dto: CoinPriceConversionContainerDto) = CoinPriceConversion(
-        id = dto.data?.id,
-        symbol = dto.data?.symbol,
-        name = dto.data?.name,
-        amount = dto.data?.amount,
-        lastUpdated = dto.data?.lastUpdated,
-        price = dto.data?.quote?.values?.first()?.price,
-        convertId = dto.data?.quote?.keys?.first()?.toInt()
+    fun mapDtoTOEntity(dto: CoinPriceConversionDto?) = CoinPriceConversion(
+        id = dto?.id,
+        symbol = dto?.symbol,
+        name = dto?.name,
+        amount = dto?.amount,
+        lastUpdated = convertTime(dto?.lastUpdated),
+        price = String.format("%,.7f", dto?.quote?.values?.first()?.price),
+        convertId = dto?.quote?.keys?.first()?.toInt()
     )
 
     private fun convertTime(dateString: String?): String {

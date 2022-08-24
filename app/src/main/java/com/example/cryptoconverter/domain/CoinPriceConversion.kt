@@ -6,6 +6,6 @@ data class CoinPriceConversion(
     val name: String?,
     val amount: Int?,
     val lastUpdated: String?,
-    val price: Double?,
+    val price: String,
     val convertId: Int?
 )
