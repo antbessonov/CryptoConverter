@@ -82,7 +82,7 @@
         android:minHeight="48dp"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@id/spinner_currencies_convert"
-        app:layout_constraintTop_toBottomOf="@+id/tv_price_coin" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_last_updated" />
 
     <Spinner
         android:id="@+id/spinner_currencies_convert"
@@ -118,5 +118,29 @@
         app:layout_constraintStart_toStartOf="@id/guideline_60"
         app:layout_constraintTop_toTopOf="@id/tv_convert_result"
         tools:text="BTC" />
+
+    <TextView
+        android:id="@+id/tv_last_updated"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:padding="2dp"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_price_coin"
+        tools:text="Время последнего обновления: 00:00:00" />
+
+    <TextView
+        android:id="@+id/tv_last_updated_convert_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:padding="2dp"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_convert_result"
+        tools:text="Время последнего обновления: 00:00:00" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
