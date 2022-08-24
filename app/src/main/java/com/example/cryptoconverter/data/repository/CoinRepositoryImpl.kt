@@ -2,11 +2,13 @@ package com.example.cryptoconverter.data.repository
 
 import android.app.Application
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.example.cryptoconverter.data.database.AppDatabase
 import com.example.cryptoconverter.data.mapper.CoinMapper
 import com.example.cryptoconverter.data.network.APIFactory
 import com.example.cryptoconverter.domain.CoinInfo
+import com.example.cryptoconverter.domain.CoinPriceConversion
 import com.example.cryptoconverter.domain.CoinRepository
 import kotlinx.coroutines.delay
 
@@ -33,6 +35,24 @@ class CoinRepositoryImpl(
         }
     }
 
+    override suspend fun getCoinPriceConversion(
+        amount: Int,
+        id: Int,
+        currencyConvertID: Int,
+    ): LiveData<CoinPriceConversion> {
+        val liveData = MutableLiveData<CoinPriceConversion>()
+        try {
+            val coinPriceConversionDto = apiService.getCoinPriceConversion(
+                amount = amount,
+                id = id,
+                currencyConvertID = currencyConvertID
+            ).data
+            liveData.value = mapper.mapDtoTOEntity(coinPriceConversionDto)
+        } catch (e: Exception) {
+        }
+        return liveData
+    }
+
     override suspend fun loadData() {
         while (true) {
             try {
@@ -46,7 +66,7 @@ class CoinRepositoryImpl(
                 }
             } catch (e: Exception) {
             }
-            delay(10000)
+            delay(120000)
         }
     }
 }
