@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.example.cryptoconverter.R
 import com.example.cryptoconverter.databinding.ItemCoinInfoBinding
-import com.example.cryptoconverter.domain.CoinInfo
+import com.example.cryptoconverter.domain.model.CoinInfo
 import com.squareup.picasso.Picasso
 
 class CoinInfoAdapter(
@@ -30,7 +30,7 @@ class CoinInfoAdapter(
         Picasso.get().load(coin.url).into(holder.binding.ivLogoCoin)
         holder.binding.tvSymbolCoin.text = coin.symbol
         holder.binding.tvNameCoin.text = coin.name
-        holder.binding.tvPriceCoin.text = coin.price
+        holder.binding.tvPriceCoin.text = String.format("%,.7f", coin.price)
         holder.binding.tvLastUpdated.text = String.format(lastUpdateTemplate, coin.lastUpdated)
         holder.binding.root.setOnClickListener {
             onCoinClickListener?.onCoinClick(coin)

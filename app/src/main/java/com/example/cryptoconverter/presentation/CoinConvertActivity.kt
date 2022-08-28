@@ -2,9 +2,12 @@ package com.example.cryptoconverter.presentation
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.KeyEvent
+import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.example.cryptoconverter.R
 import com.example.cryptoconverter.databinding.ActivityCoinConvertBinding
 import com.squareup.picasso.Picasso
 
@@ -38,14 +41,44 @@ class CoinConvertActivity : AppCompatActivity() {
             finish()
             return
         }
+
         val idCoin = intent.getIntExtra(EXTRA_ID_COIN, DEFAULT_ID_COIN)
+        val amountDefault = binding.edtAmountCurrencyToConvert.hint.toString().toDouble()
+
         viewModel.getCoinInfo(idCoin).observe(this) {
             with(binding) {
                 Picasso.get().load(it.url).into(ivLogoCoin)
                 tvSymbolCoin.text = it.symbol
                 tvNameCoin.text = it.name
-                tvPriceCoin.text = it.price
+                tvPriceCoin.text = String.format("%,.7f", it.price)
+                tvLastUpdated.text = String.format(
+                    getString(R.string.last_update_template),
+                    it.lastUpdated
+                )
+                if (edtAmountCurrencyToConvert.text.isNullOrEmpty()) {
+                    viewModel.saveCoinPriseConversion(it, amountDefault)
+                }
+                edtAmountCurrencyToConvert.setOnKeyListener { view, i, keyEvent ->
+                    if (keyEvent.action == KeyEvent.ACTION_DOWN && i == KeyEvent.KEYCODE_ENTER) {
+                        val amount = binding.edtAmountCurrencyToConvert.text
+                            .toString()
+                            .toDouble()
+                        viewModel.saveCoinPriseConversion(it, amount)
+                        binding.edtAmountCurrencyToConvert.clearFocus()
+                        val imm = view.context.getSystemService(
+                            Context.INPUT_METHOD_SERVICE
+                        ) as InputMethodManager
+                        imm.hideSoftInputFromWindow(view.windowToken, 0)
+                        return@setOnKeyListener true
+                    }
+                    return@setOnKeyListener false
+                }
+                tvConvertResultCurrency.text = it.symbol
             }
+        }
+
+        viewModel.coinPriseConversion.observe(this) {
+            binding.tvConvertResult.text = String.format("%,.7f", it.priceConversion)
         }
     }
 }

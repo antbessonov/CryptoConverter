@@ -1,7 +1,7 @@
 package com.example.cryptoconverter.presentation.adapters
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.cryptoconverter.domain.CoinInfo
+import com.example.cryptoconverter.domain.model.CoinInfo
 
 object CoinInfoDiffCallback : DiffUtil.ItemCallback<CoinInfo>() {
 

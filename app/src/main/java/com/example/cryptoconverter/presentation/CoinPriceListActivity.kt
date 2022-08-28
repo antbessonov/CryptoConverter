@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.cryptoconverter.databinding.ActivityCoinPriceListBinding
-import com.example.cryptoconverter.domain.CoinInfo
+import com.example.cryptoconverter.domain.model.CoinInfo
 import com.example.cryptoconverter.presentation.adapters.CoinInfoAdapter
 
 class CoinPriceListActivity : AppCompatActivity() {
