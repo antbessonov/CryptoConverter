@@ -54,4 +54,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     androidTestImplementation 'com.agoda.kakao:kakao:2.4.0'
+    androidTestImplementation 'com.kaspersky.android-components:kaspresso:1.4.1'
 }
