@@ -1,10 +1,9 @@
-package com.example.cryptoconverter.domain
+package com.example.cryptoconverter.domain.usecase
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import com.example.cryptoconverter.domain.model.CoinInfo
 import com.example.cryptoconverter.domain.repository.CoinRepository
-import com.example.cryptoconverter.domain.usecase.GetCoinInfoUseCase
 import org.junit.Assert
 import org.junit.Rule
 import org.junit.Test
