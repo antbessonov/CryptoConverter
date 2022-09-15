@@ -88,9 +88,9 @@ class CoinPriceListTest : TestCase() {
     }
 
     @Test
-    fun checkCoinConversion() {
+    fun checkCoinConversionDisplayed() {
         run {
-            step("") {
+            step("Click first coin") {
                 CoinPriceListScreen {
                     coinPriceList {
                         firstChild<CoinPriceListScreen.CoinInfoItem> {
@@ -99,7 +99,42 @@ class CoinPriceListTest : TestCase() {
                     }
                 }
             }
-            step("") {
+            step("Check conversion content") {
+                CoinConvertScreen {
+                    amountCurrencyToConvert {
+                        hasEmptyText()
+                        hasHint(DEFAULT_AMOUNT_CURRENCY_TO_CONVERT)
+                    }
+                    currencyConvertEdt {
+                        isDisplayed()
+                        hasText("USD")
+                    }
+                    convertResult {
+                        isDisplayed()
+                        hasAnyText()
+                    }
+                    currencyConvertResult {
+                        isDisplayed()
+                        hasText("BTC")
+                    }
+                }
+            }
+        }
+    }
+
+    @Test
+    fun checkCoinConversion() {
+        run {
+            step("Click first coin") {
+                CoinPriceListScreen {
+                    coinPriceList {
+                        firstChild<CoinPriceListScreen.CoinInfoItem> {
+                            click()
+                        }
+                    }
+                }
+            }
+            step("Check conversion") {
                 CoinConvertScreen {
                     amountCurrencyToConvert {
                         hasEmptyText()
@@ -164,6 +199,7 @@ class CoinPriceListTest : TestCase() {
     companion object {
 
         private const val LIMIT_CURRENCY = 15
+
         private const val DEFAULT_AMOUNT_CURRENCY_TO_CONVERT = "100"
         private const val AMOUNT_CURRENCY_TO_CONVERT = "1000"
     }
