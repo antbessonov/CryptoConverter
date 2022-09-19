@@ -2,8 +2,9 @@ package com.example.cryptoconverter.domain.usecase
 
 import com.example.cryptoconverter.domain.model.CoinInfo
 import com.example.cryptoconverter.domain.repository.CoinRepository
+import javax.inject.Inject
 
-class SaveCoinPriseConversionUseCase(
+class SaveCoinPriseConversionUseCase @Inject constructor(
     private val repository: CoinRepository,
 ) {
 
