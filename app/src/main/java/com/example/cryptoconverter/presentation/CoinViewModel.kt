@@ -1,22 +1,19 @@
 package com.example.cryptoconverter.presentation
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.cryptoconverter.data.repository.CoinRepositoryImpl
 import com.example.cryptoconverter.domain.model.CoinInfo
 import com.example.cryptoconverter.domain.usecase.*
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class CoinViewModel(application: Application) : AndroidViewModel(application) {
-
-    private val repository = CoinRepositoryImpl(application)
-
-    private val getCoinInfoListUseCase = GetCoinInfoListUseCase(repository)
-    private val getCoinInfoUseCase = GetCoinInfoUseCase(repository)
-    private val loadDataUseCase = LoadDataUseCase(repository)
-    private val saveCoinPriseConversionUseCase = SaveCoinPriseConversionUseCase(repository)
-    private val getCoinPriseConversionUseCase = GetCoinPriseConversionUseCase(repository)
+class CoinViewModel @Inject constructor(
+    private val getCoinInfoListUseCase: GetCoinInfoListUseCase,
+    private val getCoinInfoUseCase: GetCoinInfoUseCase,
+    private val loadDataUseCase: LoadDataUseCase,
+    private val saveCoinPriseConversionUseCase: SaveCoinPriseConversionUseCase,
+    private val getCoinPriseConversionUseCase: GetCoinPriseConversionUseCase,
+) : ViewModel() {
 
     init {
         viewModelScope.launch {
