@@ -5,8 +5,9 @@ import com.example.cryptoconverter.data.network.model.CoinInfoDto
 import com.example.cryptoconverter.domain.model.CoinInfo
 import java.text.SimpleDateFormat
 import java.util.*
+import javax.inject.Inject
 
-class CoinInfoMapper {
+class CoinInfoMapper @Inject constructor() {
 
     companion object {
 

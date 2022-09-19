@@ -3,8 +3,9 @@ package com.example.cryptoconverter.data.mapper
 import com.example.cryptoconverter.data.sharedprefs.model.CoinPriseConversionSharedPrefs
 import com.example.cryptoconverter.domain.model.CoinInfo
 import com.example.cryptoconverter.domain.model.CoinPriceConversion
+import javax.inject.Inject
 
-class CoinPriseConversionMapper {
+class CoinPriseConversionMapper @Inject constructor() {
 
     companion object {
         private const val UNIT_CURRENCY = 1.0
