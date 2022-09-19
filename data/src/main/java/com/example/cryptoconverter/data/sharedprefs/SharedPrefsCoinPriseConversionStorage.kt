@@ -1,10 +1,12 @@
 package com.example.cryptoconverter.data.sharedprefs
 
+import android.app.Application
 import android.content.Context
 import com.example.cryptoconverter.data.sharedprefs.model.CoinPriseConversionSharedPrefs
+import javax.inject.Inject
 
-class SharedPrefsCoinPriseConversionStorage(
-    context: Context,
+class SharedPrefsCoinPriseConversionStorage @Inject constructor(
+    application: Application,
 ) : CoinPriseConversionStorage {
 
     companion object {
@@ -15,7 +17,7 @@ class SharedPrefsCoinPriseConversionStorage(
         private const val EMPTY_PRICE_CONVERSION = 0.0
     }
 
-    private val sharedPreferences = context.getSharedPreferences(
+    private val sharedPreferences = application.getSharedPreferences(
         SHARED_PREFS_PRICE_CONVERSION,
         Context.MODE_PRIVATE
     )
