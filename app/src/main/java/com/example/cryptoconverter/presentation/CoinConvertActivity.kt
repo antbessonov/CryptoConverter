@@ -8,8 +8,10 @@ import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.cryptoconverter.R
+import com.example.cryptoconverter.app.CoinApp
 import com.example.cryptoconverter.databinding.ActivityCoinConvertBinding
 import com.squareup.picasso.Picasso
+import javax.inject.Inject
 
 class CoinConvertActivity : AppCompatActivity() {
 
@@ -29,11 +31,20 @@ class CoinConvertActivity : AppCompatActivity() {
         ActivityCoinConvertBinding.inflate(layoutInflater)
     }
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+
     private val viewModel by lazy {
-        ViewModelProvider(this)[CoinViewModel::class.java]
+        ViewModelProvider(this, viewModelFactory)[CoinViewModel::class.java]
+    }
+
+    private val component by lazy {
+        (application as CoinApp).component
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        component.inject(this)
+
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
